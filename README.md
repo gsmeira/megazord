@@ -47,12 +47,30 @@ function App() {
 - Node.js >= 18.0.0
 - npm
 
-### Setup
+### Quick Start (Running Locally)
 
 ```bash
-# Install dependencies
+# 1. Clone the repository
+git clone https://github.com/gsmeira/megazord-ui.git
+cd megazord-ui
+
+# 2. Install dependencies
 npm install
 
+# 3. Build the UI package (REQUIRED before running playground)
+npm run build --workspace=@megazord-ui/ui
+
+# 4. Start the playground development server
+npm run dev
+```
+
+**Important:** You must build the UI package before running the playground app, otherwise you'll see errors like `Can't resolve '@megazord-ui/ui/styles.css'`.
+
+For detailed development instructions, troubleshooting, and workflows, see the [Development Guide](./DEVELOPMENT.md).
+
+### Common Commands
+
+```bash
 # Build all packages
 npm run build
 
@@ -65,7 +83,7 @@ npm run lint
 # Format code
 npm run format
 
-# Start playground development server
+# Start playground (after building UI package)
 npm run dev
 ```
 
