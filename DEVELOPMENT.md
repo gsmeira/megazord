@@ -186,6 +186,22 @@ npm run build --workspace=@megazord-ui/ui
 # Then restart the dev server
 ```
 
+### Issue: Button styles not showing properly in playground
+
+**Solution:** This is already fixed! The playground's `globals.css` uses TailwindCSS v4's `@source` directive to scan both the playground files and the UI package source files. If you encounter this issue:
+
+1. Make sure you've built the UI package first
+2. Restart the dev server
+3. Clear your browser cache
+
+The configuration in `apps/playground/app/globals.css` includes:
+```css
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+@source "../../../packages/ui/src/**/*.{js,ts,jsx,tsx}";
+```
+
+This tells Tailwind to scan for utility classes in both locations.
+
 ### Issue: Type errors in the playground
 
 **Solution:** Ensure the UI package is built, as it generates TypeScript declaration files:
