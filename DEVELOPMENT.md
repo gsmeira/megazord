@@ -222,6 +222,20 @@ npm install
 npm run build --workspace=@megazord-ui/ui
 ```
 
+## Architecture Notes
+
+### TailwindCSS v4 Setup
+
+The project uses a specific architecture for TailwindCSS v4:
+
+- **UI Package (`packages/ui/src/styles.css`)**: Contains ONLY theme configuration (@theme directive with CSS variables). It does NOT import Tailwind.
+- **Playground (`apps/playground/app/globals.css`)**: Imports Tailwind first, then imports the UI package styles, and uses @source directives to scan for classes.
+
+This separation ensures:
+- No duplicate Tailwind imports
+- Proper utility class generation
+- Clean library architecture (theme config separate from framework)
+
 ## Project Structure
 
 ```
@@ -232,7 +246,7 @@ megazord-ui/
 │       │   ├── components/    # React components
 │       │   ├── lib/          # Utility functions
 │       │   ├── test/         # Test setup
-│       │   ├── styles.css    # Theme & TailwindCSS
+│       │   ├── styles.css    # Theme config ONLY (no Tailwind import)
 │       │   └── index.ts      # Main entry point
 │       ├── dist/             # Built files (generated)
 │       ├── vite.config.ts    # Vite configuration
