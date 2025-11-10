@@ -1,0 +1,23 @@
+{
+  "name": "megazord-ui",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A React UI component library with shadcn/ui design",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
+    "dev": "npm run dev --workspace=playground"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
