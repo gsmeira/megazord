@@ -1,22 +1,23 @@
 import { source } from '@/lib/source';
-import type { ReactNode } from 'react';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
+import { baseOptions } from '@/lib/layout.shared';
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: LayoutProps<'/docs'>) {
   return (
     <DocsLayout
       tree={source.pageTree}
-      nav={{
-        title: 'Megazord UI',
-        url: '/',
-      }}
-      links={[
-        {
-          text: 'GitHub',
-          url: 'https://github.com/gsmeira/megazord-ui',
-          active: 'nested-url',
-        },
-      ]}
+      {...baseOptions()}
+      // nav={{
+      //   title: 'Megazord UI',
+      //   url: '/',
+      // }}
+      // links={[
+      //   {
+      //     text: 'GitHub',
+      //     url: 'https://github.com/gsmeira/megazord-ui',
+      //     active: 'nested-url',
+      //   },
+      // ]}
     >
       {children}
     </DocsLayout>

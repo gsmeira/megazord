@@ -1,7 +1,7 @@
-import { loader } from 'fumadocs-core/source';
-import { icons } from 'lucide-react';
-import { createElement } from 'react';
-import { docs, meta } from '@/.source';
+import {loader} from 'fumadocs-core/source';
+import {icons} from 'lucide-react';
+import {createElement} from 'react';
+import {docs} from '@/.source';
 
 export const source = loader({
   baseUrl: '/docs',
@@ -9,8 +9,5 @@ export const source = loader({
     if (icon && icon in icons)
       return createElement(icons[icon as keyof typeof icons]);
   },
-  source: {
-    files: docs,
-    meta,
-  },
+  source: docs.toFumadocsSource(),
 });

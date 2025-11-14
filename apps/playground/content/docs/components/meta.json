@@ -1,5 +1,7 @@
 {
   "title": "Components",
-  "pages": ["button"],
+  "pages": [
+    "button"
+  ],
   "icon": "Box"
 }

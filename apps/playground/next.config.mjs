@@ -1,11 +1,13 @@
-import { createMDX } from 'fumadocs-mdx/next';
+import {createMDX} from 'fumadocs-mdx/next';
 
-const withMDX = createMDX();
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const config = {
   reactStrictMode: true,
   transpilePackages: ['@megazord-ui/ui'],
-};
+}
 
-export default withMDX(nextConfig);
+const withMDX = createMDX({
+  // customise the config file path
+  // configPath: "source.config.ts"
+});
+
+export default withMDX(config);
