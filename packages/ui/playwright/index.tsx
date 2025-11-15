@@ -1,4 +1,2 @@
-import '../src/styles.css';
-
-// Import TailwindCSS for component testing
-import 'tailwindcss/tailwind.css';
+// Import component theme styles with TailwindCSS configuration
+import './styles.css';

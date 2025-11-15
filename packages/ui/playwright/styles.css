@@ -1,0 +1,5 @@
+/* Import TailwindCSS v4 */
+@import "tailwindcss";
+
+/* Component theme styles */
+@import "../src/styles.css";

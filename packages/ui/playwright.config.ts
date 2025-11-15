@@ -1,4 +1,9 @@
 import { defineConfig, devices } from '@playwright/experimental-ct-react';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -14,6 +19,16 @@ export default defineConfig({
   use: {
     trace: 'on-first-retry',
     ctPort: 3100,
+    ctViteConfig: {
+      resolve: {
+        alias: {
+          '@': resolve(__dirname, './src'),
+        },
+      },
+      plugins: [
+        require('@tailwindcss/vite').default(),
+      ],
+    },
   },
 
   projects: [
