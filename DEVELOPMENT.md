@@ -6,7 +6,9 @@ This guide provides step-by-step instructions for setting up and running the Meg
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js** >= 18.0.0 (verify with `node --version`)
+- **Node.js** >= 22.0.0 (verify with `node --version`)
+  - We recommend using [nvm](https://github.com/nvm-sh/nvm) for easy Node.js version management
+  - This project includes an `.nvmrc` file to automatically use the correct version
 - **pnpm** >= 8.0.0 (verify with `pnpm --version`)
   - Install pnpm: `npm install -g pnpm` or visit [pnpm.io](https://pnpm.io/installation)
 
@@ -21,7 +23,22 @@ git clone https://github.com/gsmeira/megazord-ui.git
 cd megazord-ui
 ```
 
-### 2. Install Dependencies
+### 2. Use Correct Node.js Version
+
+If you're using nvm, the project will automatically use the correct Node.js version:
+
+```bash
+nvm use
+```
+
+This reads the `.nvmrc` file and switches to Node.js 22. If you don't have Node.js 22 installed yet, nvm will prompt you to install it:
+
+```bash
+nvm install 22
+nvm use
+```
+
+### 3. Install Dependencies
 
 Install dependencies for all packages in the monorepo:
 
@@ -36,7 +53,7 @@ This will install dependencies for:
 
 pnpm uses a content-addressable storage system, which means packages are stored once globally and linked to projects, saving disk space.
 
-### 3. Build the UI Package
+### 4. Build the UI Package
 
 **Important:** You must build the UI package before running the playground app.
 
@@ -65,7 +82,7 @@ The playground app imports `@megazord-ui/ui/styles.css` and components from `@me
 Can't resolve '@megazord-ui/ui/styles.css'
 ```
 
-### 4. Run the Playground Development Server
+### 5. Run the Playground Development Server
 
 Now you can start the Next.js playground app:
 
@@ -386,6 +403,29 @@ npm run build --workspace=playground
 
 ## Troubleshooting
 
+### Wrong Node.js Version
+
+If you're getting unexpected errors, verify you're using Node.js >= 22:
+
+```bash
+node --version
+```
+
+If using nvm, switch to the correct version:
+
+```bash
+nvm use
+```
+
+Or install Node.js 22 if you haven't already:
+
+```bash
+nvm install 22
+nvm use
+```
+
+The project enforces Node.js >= 22.0.0 via the `engines` field in package.json. Using an older version may cause compatibility issues.
+
 ### Clear All Build Artifacts
 
 ```bash
@@ -394,20 +434,21 @@ rm -rf packages/ui/dist
 rm -rf apps/playground/.next
 
 # Rebuild
-npm run build
+pnpm build
 ```
 
 ### Reset Everything
 
-```bash
-# Remove all dependencies and build artifacts
-rm -rf node_modules package-lock.json
-rm -rf packages/*/node_modules packages/*/dist
-rm -rf apps/*/node_modules apps/*/.next
+Use the `pnpm fresh` command for a clean reinstall:
 
-# Reinstall and rebuild
-npm install
-npm run build --workspace=@megazord-ui/ui
+```bash
+pnpm fresh
+```
+
+This removes all lockfiles, node_modules, and build artifacts, then reinstalls everything fresh. After running this, remember to rebuild the UI package:
+
+```bash
+pnpm --filter @megazord-ui/ui build
 ```
 
 ## Getting Help

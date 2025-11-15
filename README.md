@@ -48,7 +48,7 @@ function App() {
 
 ### Prerequisites
 
-- Node.js >= 18.0.0
+- Node.js >= 22.0.0 (use [nvm](https://github.com/nvm-sh/nvm) for easy version management)
 - pnpm >= 8.0.0
 
 ### Quick Start (Running Locally)
@@ -58,13 +58,16 @@ function App() {
 git clone https://github.com/gsmeira/megazord-ui.git
 cd megazord-ui
 
-# 2. Install dependencies
+# 2. Use correct Node.js version (if using nvm)
+nvm use
+
+# 3. Install dependencies
 pnpm install
 
-# 3. Build the UI package (REQUIRED before running playground)
+# 4. Build the UI package (REQUIRED before running playground)
 pnpm --filter @megazord-ui/ui build
 
-# 4. Start the playground development server
+# 5. Start the playground development server
 pnpm dev
 ```
 
