@@ -1,0 +1,8 @@
+@import "@megazord-ui/ui/styles.css";
+@import "tailwindcss";
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+@source "../../../packages/ui/src/**/*.{js,ts,jsx,tsx}";
+@source "../../../content/**/*.mdx";
