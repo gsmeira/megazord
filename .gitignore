@@ -12,6 +12,7 @@ storybook-static
 coverage
 playwright-report
 test-results
+playwright/.cache
 
 # Environment
 .env
